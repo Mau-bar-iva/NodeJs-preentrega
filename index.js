@@ -1,5 +1,5 @@
-const [, , method, endpoint, title, price, category] = process.argv;
-
+let [, , method, endpoint, title, price, category] = process.argv;
+endpoint = `https://fakestoreapi.com/${endpoint}`;
 const partes = endpoint.split('/');
 const recurso = partes[0];
 const id = partes[1];
@@ -33,7 +33,7 @@ if (method.toLowerCase() === 'get') {
             category
         };
 
-        fetch(`https://fakestoreapi.com/${endpoint}`, {
+        fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
